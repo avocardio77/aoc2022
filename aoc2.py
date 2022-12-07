@@ -1,13 +1,28 @@
 sum = 0
-max = 0
 
-with open('C:/Users/routa/Documents/aoc/aoc1input.txt') as f:
+rpsDict = {
+    'A' : 'X',
+    'B' : 'Y',
+    'C' : 'Z'
+}
+
+outcomeScoreDict = {
+    'X' : 1,
+    'Y' : 2,
+    'Z' : 3
+}
+
+def defineWinnerPoints(opponent, you):
+    if (rpsDict.get(opponent) == you):
+        return 3
+    elif ((opponent == 'A' & you == 'Y') |
+                (opponent == 'B' & you == 'Z') |
+                (opponent == 'C' & you == 'X')):
+        return 6
+    else:
+        return 0
+
+
+with open('aoc2input.txt') as f:
     for line in f:
-        if line != '\n':
-            sum += int(line)
-        else:
-            if sum > max:
-                    max = sum
-            sum = 0
-
-print(max)
+        print(line)
